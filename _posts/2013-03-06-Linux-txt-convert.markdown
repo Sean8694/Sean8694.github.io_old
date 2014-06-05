@@ -2,7 +2,7 @@
 layout: post
 title:  "[转载]Linux下文本编码转换"
 date:   2013-03-06 23:12:59
-categories: jekyll update
+categories: tech forward
 ---
 
 本文转载自ncforest[《Linux下文本编码转换》](http://blog.163.com/ncforest/blog/static/2956266420100604751946)
