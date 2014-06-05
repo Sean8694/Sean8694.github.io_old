@@ -1,0 +1,10 @@
+# Site settings
+title: Sean's Tech Blog
+email: sean8694@gmail.com
+description: "Only Forward, No Creation."
+baseurl: ""
+url: "http://localhost"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
