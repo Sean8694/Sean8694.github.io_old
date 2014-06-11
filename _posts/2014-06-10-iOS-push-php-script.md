@@ -2,7 +2,6 @@
 layout: post
 title:  "iOS Push Notification PHP Script"
 date:   2014-06-09 12:25:10
-categories: tech iOS php
 tags: [iOS, PHP]
 ---
 
