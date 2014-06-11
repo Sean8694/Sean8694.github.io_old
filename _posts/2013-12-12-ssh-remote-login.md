@@ -61,8 +61,8 @@ $ cat id_rsa.pub >> ~/.ssh/authorized_keys
 `/home/user/.ssh/authorized_keys` 公钥的权限**644**
 
 
-###References:
-
-[使用ssh公钥实现免密码登录](http://blog.sina.com.cn/s/blog_4077692e0100qjkp.html)
-
-[使用ssh公钥实现ssh免密码登录](http://hi.baidu.com/meloidea/item/15d43d2dd11d010e72863eb4)
+> ###References:
+>
+> [使用ssh公钥实现免密码登录](http://blog.sina.com.cn/s/blog_4077692e0100qjkp.html)
+>
+> [使用ssh公钥实现ssh免密码登录](http://hi.baidu.com/meloidea/item/15d43d2dd11d010e72863eb4)
