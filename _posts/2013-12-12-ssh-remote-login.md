@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "SSH 使用公钥远程登录"
-date:   2012-12-12 12:25:10
+date:   2013-12-12 12:25:10
 categories: ssh
 tags: [ssh, Linux]
 ---
