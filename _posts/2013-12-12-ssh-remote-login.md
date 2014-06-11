@@ -28,7 +28,32 @@ $ scp ~/.ssh/id_rsa.pub user@10.2.43.99:~
 
 {% endhighlight %}
 
-###3.  将`id_rsa.pub`文件内容添加到`authorized_keys`
+###3.  登陆到机器B
 
+{% highlight bash %}
 
+$ ssh user@10.2.43.99
 
+{% endhighlight %}
+
+将`id_rsa.pub`文件内容追加到`authorized_keys`
+
+{% highlight bash %}
+
+$ cat id_rsa.pub >> ~/.ssh/authorized_keys
+
+{% endhighlight %}
+
+###4.  确认`~/.ssh/authorized_keys`文件的访问权限为**600**
+
+{% highlight bash %}
+
+$ chmod 600 ~/.ssh/authorized_keys
+
+{% endhighlight %}
+
+至此，则可以从机器A无密码登陆到机器B了。
+
+###References:
+[使用ssh公钥实现免密码登录](http://blog.sina.com.cn/s/blog_4077692e0100qjkp.html)
+[使用ssh公钥实现ssh免密码登录](http://hi.baidu.com/meloidea/item/15d43d2dd11d010e72863eb4)
