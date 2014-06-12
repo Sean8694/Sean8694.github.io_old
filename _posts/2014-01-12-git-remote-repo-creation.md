@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "git 创建远程仓库"
+title: "git 使用基本方法"
 modified: 2014-01-12 00:16:58 +0800
 tags: [git]
 ---
+
+#1. 创建一个远程仓库
 
 ##1. 登陆远程服务器，创建一个空仓库
 
@@ -68,6 +70,200 @@ $ git push origin master
 
 > 以上方法二选一即可
 
+#2. 显示仓库信息
+
+##1. 仓库配置信息
+
+{% highlight bash %}
+
+$ git config -l
+
+{% endhighlight %}
+
+显示的信息为`.git/config`文件的信息
+
+##2. 获取最新仓库到本地
+
+从远程的分支获取最新的版本到本地
+
+{% highlight bash %}
+
+$ git fetch
+
+{% endhighlight %}
+
+从远程获取最新版本到本地，但不会自动merge
+
+##3. 显示分支信息
+
+{% highlight bash %}
+
+$ git branch -a
+
+{% endhighlight %}
+
+使用参数 `-r` 可以查看远程分支
+
+##4. 显示远程信息
+
+{% highlight bash %}
+
+$ git remote show origin 
+
+{% endhighlight %}
+
+显示origin库的配置信息
+
+#3. 分支同步
+
+##1. 本地创建分支
+
+{% highlight bash %}
+
+$ git checkout -b  testing origin/testing
+
+{% endhighlight %}
+
+将远程的testing分支同步到本地
+
+##2. 向远程库推送代码
+
+{% highlight bash %}
+
+$ git push origin testing:testing
+
+{% endhighlight %}
+
+这等效于
+
+{% highlight bash %}
+
+$ git push origin testing
+
+{% endhighlight %}
+
+> 如果配置了gerrit管理远程git仓库，则需要指定远程仓库地址
+>
+> 如:`git push origin testing:refs/for/testing`
+
+##3. 创建远程分支
+
+首先创建本地分支
+
+{% highlight bash %}
+
+$ git branch testing
+
+{% endhighlight %}
+
+然后将它推送到远程分支
+
+{% highlight bash %}
+
+$ git push origin testing
+
+{% endhighlight %}
+
+这样便可以自动创建一个远程分支
+
+> 如果配置了gerrit管理远程git仓库，则需要使用gerrit创建分支
+
+##4. 删除远程分支
+
+{% highlight bash %}
+
+$ git push origin :testing
+
+{% endhighlight %}
+
+远程的testing将被删除，但是本地还会保存的
+
+> 如果配置了gerrit管理远程git仓库，则需要使用gerrit删除分支
+
+#4. 使用git submodule
+
+##1. 建立一个submodule
+
+{% highlight bash %}
+
+$ git submodule add git@domain.com:another_project.git another_project
+
+{% endhighlight %}
+
+例如:
+
+{% highlight bash %}
+
+$ git submodule add ssh://user@10.2.43.99/~/hello.git static/hello
+
+{% endhighlight %}
+
+然后需要commit一下，完成配置。
+
+对于本地代码，还需要init一下，才会在`.git/config`中产生相应信息。
+
+{% highlight bash %}
+
+$ git submodule init
+
+{% endhighlight %}
+
+##2. 更新submodule
+
+{% highlight bash %}
+
+$ git submodule update
+
+{% endhighlight %}
+
+只有更新过submodule之后，才能够拉取下远程仓库的内容
+
+##3. 删除submodule
+
+删除submodule并没有相关的指令，需要清理掉相关的信息，才能够删除响应的submodule
+
+先删除掉相应目录
+
+{% highlight bash %}
+
+$ git rm --cached [欲移除的目錄]
+$ rm -rf [欲移除的目錄]
+
+{% endhighlight %}
+
+再修改`.gitmodules`，删除相应内容
+
+{% highlight bash %}
+
+$ vim .gitmodules
+
+{% endhighlight %}
+
+再修改`.git/config`，删除相应内容
+
+{% highlight bash %}
+
+$ vim .git/config
+
+{% endhighlight %}
+
+提交修改
+
+{% highlight bash %}
+
+$ git add .gitmodules
+$ git commit -m "Remove a submodule"
+
+{% endhighlight %}
+
+安全起见，最后`sync`一下
+
+{% highlight bash %}
+
+$ git submodule sync
+
+{% endhighlight %}
+
 > ##Reference:
 >
 > [git--远程仓库](http://blog.csdn.net/adream307/article/details/6394981)
@@ -75,5 +271,6 @@ $ git push origin master
 > [为git安装一个远程仓库](http://zhiwei.li/text/2010/05/%E4%B8%BAgit%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/)
 >
 > [git 使用远程库 （zz）](http://www.cnblogs.com/dqshll/articles/1791234.html)
-
+>
+> [Git Submodule 的認識與正確使用！](http://www.josephj.com/entry.php?id=342)
 
