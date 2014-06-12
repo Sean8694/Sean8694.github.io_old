@@ -1,9 +1,11 @@
 ---
 layout: post
-title: "git 创建远程仓库"
+title: "git 使用基本方法"
 modified: 2014-01-12 00:16:58 +0800
 tags: [git]
 ---
+
+#1. 创建一个远程仓库
 
 ##1. 登陆远程服务器，创建一个空仓库
 
@@ -67,6 +69,114 @@ $ git push origin master
 {% endhighlight %}
 
 > 以上方法二选一即可
+
+#2. 显示仓库信息
+
+##1. 仓库配置信息
+
+{% highlight bash %}
+
+$ git config -l
+
+{% endhighlight %}
+
+显示的信息为`.git/config`文件的信息
+
+##2. 获取最新仓库到本地
+
+从远程的分支获取最新的版本到本地
+
+{% highlight bash %}
+
+$ git fetch
+
+{% endhighlight %}
+
+从远程获取最新版本到本地，但不会自动merge
+
+##3. 显示分支信息
+
+{% highlight bash %}
+
+$ git branch -a
+
+{% endhighlight %}
+
+使用参数 `-r` 可以查看远程分支
+
+##4. 显示远程信息
+
+{% highlight bash %}
+
+$ git remote show origin 
+
+{% endhighlight %}
+
+显示origin库的配置信息
+
+#3. 分支同步
+
+##1. 本地创建分支
+
+{% highlight bash %}
+
+$ git checkout -b  testing origin/testing
+
+{% endhighlight %}
+
+将远程的testing分支同步到本地
+
+##2. 向远程库推送代码
+
+{% highlight bash %}
+
+$ git push origin testing:testing
+
+{% endhighlight %}
+
+这等效于
+
+{% highlight bash %}
+
+$ git push origin testing
+
+{% endhighlight %}
+
+> 如果配置了gerrit管理远程git仓库，则需要指定远程仓库地址
+>
+> 如:`git push origin testing:refs/for/testing`
+
+##3. 创建远程分支
+
+首先创建本地分支
+
+{% highlight bash %}
+
+$ git branch testing
+
+{% endhighlight %}
+
+然后将它推送到远程分支
+
+{% highlight bash %}
+
+$ git push origin testing
+
+{% endhighlight %}
+
+这样便可以自动创建一个远程分支
+
+> 如果配置了gerrit管理远程git仓库，则需要使用gerrit创建分支
+
+##4. 删除远程分支
+
+{% highlight bash %}
+
+$ git push origin :testing
+
+{% endhighlight %}
+
+远程的testing将被删除，但是本地还会保存的
 
 > ##Reference:
 >
