@@ -178,6 +178,92 @@ $ git push origin :testing
 
 远程的testing将被删除，但是本地还会保存的
 
+> 如果配置了gerrit管理远程git仓库，则需要使用gerrit删除分支
+
+#4. 使用git submodule
+
+##1. 建立一个submodule
+
+{% highlight bash %}
+
+$ git submodule add git@domain.com:another_project.git another_project
+
+{% endhighlight %}
+
+例如:
+
+{% highlight bash %}
+
+$ git submodule add ssh://user@10.2.43.99/~/hello.git static/hello
+
+{% endhighlight %}
+
+然后需要commit一下，完成配置。
+
+对于本地代码，还需要init一下，才会在`.git/config`中产生相应信息。
+
+{% highlight bash %}
+
+$ git submodule init
+
+{% endhighlight %}
+
+##2. 更新submodule
+
+{% highlight bash %}
+
+$ git submodule update
+
+{% endhighlight %}
+
+只有更新过submodule之后，才能够拉取下远程仓库的内容
+
+##3. 删除submodule
+
+删除submodule并没有相关的指令，需要清理掉相关的信息，才能够删除响应的submodule
+
+先删除掉相应目录
+
+{% highlight bash %}
+
+$ git rm --cached [欲移除的目錄]
+$ rm -rf [欲移除的目錄]
+
+{% endhighlight %}
+
+再修改`.gitmodules`，删除相应内容
+
+{% highlight bash %}
+
+$ vim .gitmodules
+
+{% endhighlight %}
+
+再修改`.git/config`，删除相应内容
+
+{% highlight bash %}
+
+$ vim .git/config
+
+{% endhighlight %}
+
+提交修改
+
+{% highlight bash %}
+
+$ git add .gitmodules
+$ git commit -m "Remove a submodule"
+
+{% endhighlight %}
+
+安全起见，最后`sync`一下
+
+{% highlight bash %}
+
+$ git submodule sync
+
+{% endhighlight %}
+
 > ##Reference:
 >
 > [git--远程仓库](http://blog.csdn.net/adream307/article/details/6394981)
@@ -185,5 +271,6 @@ $ git push origin :testing
 > [为git安装一个远程仓库](http://zhiwei.li/text/2010/05/%E4%B8%BAgit%E5%AE%89%E8%A3%85%E4%B8%80%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/)
 >
 > [git 使用远程库 （zz）](http://www.cnblogs.com/dqshll/articles/1791234.html)
-
+>
+> [Git Submodule 的認識與正確使用！](http://www.josephj.com/entry.php?id=342)
 
