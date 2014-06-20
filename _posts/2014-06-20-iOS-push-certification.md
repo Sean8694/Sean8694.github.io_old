@@ -5,7 +5,7 @@ date:   2014-06-20
 tags: [iOS]
 ---
 
-本文转载自[孙玉平的blog](http://www.sunyuping.cn/wordpress/?p=131)
+本文转载自[http://www.sunyuping.cn/](http://www.sunyuping.cn/wordpress/?p=131)
 
 IOS的推送证书，有有效期限制，一般为一年。当我们证书过期的时候，就需要重新生成证书了。有一段时间没有上苹果网站了，昨天上去一看，此奥，改版了，下边我们将重新生成一个正式环境的push推送的证书。
 
