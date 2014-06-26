@@ -47,16 +47,9 @@ $ cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 ###4. 如果还不能登陆，则需要检查文件权限
 
-机器A
-
-`/home/user` 文件夹的权限是**600**
-
-`/home/user/.ssh/id_dsa` 私钥的权限**600**
-
-
 机器B
 
-`/home/user` 文件夹的权限是**644**
+`/home/user` 文件夹的权限要**+x**
 
 `/home/user/.ssh/authorized_keys` 公钥的权限**644**
 
