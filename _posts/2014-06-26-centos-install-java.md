@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "CentOS 6.4 安装 JDK"
+title: "CentOS 6.5 安装 JDK"
 modified: 2014-06-26 13:20:06 +0800
 tags: [CentOS, Java, JDK]
 ---
 
 安装了CentOS后，需要安装JDK，系统默认安装了OpenJDK，所以需要先将其卸载，再重新安装。
 
-1. 删除OpenJDK
+###1. 删除OpenJDK
 
 检验系统原版本
 
@@ -41,7 +41,7 @@ $ rpm -e --nodeps java-1.7.0-openjdk-1.7.0.55-2.4.7.1.el6_5.x86_64
 
 {% endhighlight %}
 
-2. 安装JDK
+###2. 安装JDK
 
 先在官网下载好JDK的安装包，此处下载了jdk8u5的rpm包
 
@@ -66,7 +66,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.5-b02, mixed mode)
 
 安装成功
 
-3. 配置环境变量
+###3. 配置环境变量
 
 修改系统环境变量文件
 
