@@ -49,8 +49,6 @@ $ cat id_rsa.pub >> ~/.ssh/authorized_keys
 
 机器B
 
-`/home/user` 文件夹的权限要**+x**
-
 `/home/user/.ssh/authorized_keys` 公钥的权限**644**
 
 
